@@ -7,26 +7,10 @@ st.set_page_config(
 )
 
 USUARIOS = {
-    "loja1": {
-        "senha": "123456",
-        "nome": "Loja 1",
-        "tipo": "loja"
-    },
-    "loja2": {
-        "senha": "123456",
-        "nome": "Loja 2",
-        "tipo": "loja"
-    },
-    "loja3": {
-        "senha": "123456",
-        "nome": "Loja 3",
-        "tipo": "loja"
-    },
-    "diretoria": {
-        "senha": "123456",
-        "nome": "Diretoria",
-        "tipo": "diretoria"
-    }
+    "loja1": {"senha": "123456", "nome": "Loja 1", "tipo": "loja"},
+    "loja2": {"senha": "123456", "nome": "Loja 2", "tipo": "loja"},
+    "loja3": {"senha": "123456", "nome": "Loja 3", "tipo": "loja"},
+    "diretoria": {"senha": "123456", "nome": "Diretoria", "tipo": "diretoria"}
 }
 
 
@@ -35,11 +19,17 @@ def aplicar_css():
         """
         <style>
         .stApp {
-            background: linear-gradient(135deg, #FFF7ED 0%, #FFFFFF 45%, #FFE8CC 100%);
+            background: linear-gradient(135deg, #1d1564 0%, #120d3f 50%, #9d0139 100%);
+            color: #FFFFFF;
         }
 
         [data-testid="stHeader"] {
             background: transparent;
+        }
+
+        [data-testid="stSidebar"] {
+            background: #120d3f;
+            border-right: 1px solid rgba(255,255,255,0.12);
         }
 
         .login-container {
@@ -47,21 +37,21 @@ def aplicar_css():
             margin: 70px auto 0 auto;
             padding: 35px;
             border-radius: 24px;
-            background: #FFFFFF;
-            box-shadow: 0 20px 60px rgba(249, 115, 22, 0.18);
-            border: 1px solid rgba(249, 115, 22, 0.25);
+            background: rgba(255, 255, 255, 0.96);
+            box-shadow: 0 20px 60px rgba(157, 1, 57, 0.35);
+            border: 1px solid rgba(255, 255, 255, 0.22);
             text-align: center;
         }
 
         .login-title {
             font-size: 38px;
             font-weight: 800;
-            color: #1F2937;
+            color: #1d1564;
             margin-bottom: 5px;
         }
 
         .login-subtitle {
-            color: #6B7280;
+            color: #4B5563;
             font-size: 15px;
             margin-bottom: 25px;
         }
@@ -70,8 +60,8 @@ def aplicar_css():
             display: inline-block;
             padding: 8px 14px;
             border-radius: 999px;
-            background: #FFF7ED;
-            color: #F97316;
+            background: #FCE7F0;
+            color: #9d0139;
             font-weight: 700;
             font-size: 13px;
             margin-bottom: 15px;
@@ -82,14 +72,14 @@ def aplicar_css():
             height: 46px;
             border-radius: 12px;
             border: none;
-            background: #F97316;
+            background: #9d0139;
             color: white;
             font-weight: 700;
             font-size: 16px;
         }
 
         div.stButton > button:hover {
-            background: #EA580C;
+            background: #7c012d;
             color: white;
             border: none;
         }
@@ -97,20 +87,20 @@ def aplicar_css():
         .main-card {
             padding: 28px;
             border-radius: 22px;
-            background: #FFFFFF;
-            border: 1px solid #FED7AA;
-            box-shadow: 0 12px 35px rgba(249, 115, 22, 0.12);
+            background: rgba(255, 255, 255, 0.96);
+            border: 1px solid rgba(255,255,255,0.25);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.18);
         }
 
         .main-title {
             font-size: 34px;
             font-weight: 800;
-            color: #1F2937;
+            color: #1d1564;
             margin-bottom: 4px;
         }
 
         .main-subtitle {
-            color: #6B7280;
+            color: #4B5563;
             font-size: 16px;
         }
 
@@ -118,10 +108,26 @@ def aplicar_css():
             display: inline-block;
             padding: 10px 16px;
             border-radius: 999px;
-            background: #FFF7ED;
-            color: #F97316;
+            background: #FCE7F0;
+            color: #9d0139;
             font-weight: 800;
-            border: 1px solid #FDBA74;
+            border: 1px solid #9d0139;
+        }
+
+        h1, h2, h3, h4, h5, h6, p, label, .stMarkdown {
+            color: inherit;
+        }
+
+        [data-testid="stMetric"] {
+            background: rgba(255, 255, 255, 0.96);
+            padding: 18px;
+            border-radius: 18px;
+            border: 1px solid rgba(255,255,255,0.18);
+        }
+
+        [data-testid="stMetric"] label,
+        [data-testid="stMetric"] div {
+            color: #1d1564 !important;
         }
         </style>
         """,
@@ -132,13 +138,10 @@ def aplicar_css():
 def iniciar_sessao():
     if "logado" not in st.session_state:
         st.session_state.logado = False
-
     if "usuario" not in st.session_state:
         st.session_state.usuario = None
-
     if "nome_loja" not in st.session_state:
         st.session_state.nome_loja = None
-
     if "tipo_usuario" not in st.session_state:
         st.session_state.tipo_usuario = None
 
@@ -182,9 +185,7 @@ def tela_login():
         usuario = st.text_input("Usuário")
         senha = st.text_input("Senha", type="password")
 
-        entrar = st.button("Entrar")
-
-        if entrar:
+        if st.button("Entrar"):
             fazer_login(usuario, senha)
 
 
@@ -196,12 +197,7 @@ def tela_dashboard():
 
         pagina = st.radio(
             "Menu",
-            [
-                "Visão Geral",
-                "Comercial",
-                "Vendas",
-                "Financeiro"
-            ]
+            ["Visão Geral", "Comercial", "Vendas", "Financeiro"]
         )
 
         st.markdown("---")
@@ -228,7 +224,6 @@ def tela_dashboard():
         st.info("Aqui vamos colocar os principais indicadores da loja.")
 
         col1, col2, col3, col4 = st.columns(4)
-
         col1.metric("Leads", "0")
         col2.metric("Vendas", "0")
         col3.metric("Faturamento", "R$ 0,00")
