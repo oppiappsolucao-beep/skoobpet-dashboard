@@ -21,33 +21,23 @@ def aplicar_css():
         .stApp {
             background: linear-gradient(135deg, #1d1564 0%, #120d3f 50%, #9d0139 100%);
             color: #FFFFFF;
+            overflow: hidden;
         }
 
         [data-testid="stHeader"] {
             background: transparent;
+            height: 0px;
         }
 
         .block-container {
-            padding-top: 0rem !important;
+            padding-top: 6vh !important;
             padding-bottom: 0rem !important;
-            min-height: 100vh;
+            max-width: 1000px !important;
         }
 
         [data-testid="stSidebar"] {
             background: #120d3f;
             border-right: 1px solid rgba(255,255,255,0.12);
-        }
-
-        .login-page {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-top: -35px;
-        }
-
-        .login-box {
-            width: 430px;
         }
 
         label, .stTextInput label {
@@ -57,13 +47,13 @@ def aplicar_css():
 
         .login-container {
             width: 100%;
-            padding: 35px;
+            padding: 32px;
             border-radius: 24px;
             background: rgba(255, 255, 255, 0.96);
             box-shadow: 0 20px 60px rgba(157, 1, 57, 0.35);
             border: 1px solid rgba(255, 255, 255, 0.22);
             text-align: center;
-            margin-bottom: 0px;
+            margin-bottom: 8px;
         }
 
         .login-title {
@@ -76,7 +66,7 @@ def aplicar_css():
         .login-subtitle {
             color: #4B5563;
             font-size: 15px;
-            margin-bottom: 10px;
+            margin-bottom: 4px;
         }
 
         .badge {
@@ -186,26 +176,25 @@ def fazer_logout():
 
 
 def tela_login():
-    st.markdown('<div class="login-page"><div class="login-box">', unsafe_allow_html=True)
+    col1, col2, col3 = st.columns([1, 1.1, 1])
 
-    st.markdown(
-        """
-        <div class="login-container">
-            <div class="badge">Dashboard Comercial</div>
-            <div class="login-title">🐾 SkoobPet</div>
-            <div class="login-subtitle">Acesse o painel da sua loja</div>
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
+    with col2:
+        st.markdown(
+            """
+            <div class="login-container">
+                <div class="badge">Dashboard Comercial</div>
+                <div class="login-title">🐾 SkoobPet</div>
+                <div class="login-subtitle">Acesse o painel da sua loja</div>
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
 
-    usuario = st.text_input("Usuário")
-    senha = st.text_input("Senha", type="password")
+        usuario = st.text_input("Usuário")
+        senha = st.text_input("Senha", type="password")
 
-    if st.button("Entrar"):
-        fazer_login(usuario, senha)
-
-    st.markdown('</div></div>', unsafe_allow_html=True)
+        if st.button("Entrar"):
+            fazer_login(usuario, senha)
 
 
 def tela_dashboard():
