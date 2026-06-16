@@ -27,9 +27,27 @@ def aplicar_css():
             background: transparent;
         }
 
+        .block-container {
+            padding-top: 0rem !important;
+            padding-bottom: 0rem !important;
+            min-height: 100vh;
+        }
+
         [data-testid="stSidebar"] {
             background: #120d3f;
             border-right: 1px solid rgba(255,255,255,0.12);
+        }
+
+        .login-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: -35px;
+        }
+
+        .login-box {
+            width: 430px;
         }
 
         label, .stTextInput label {
@@ -38,14 +56,14 @@ def aplicar_css():
         }
 
         .login-container {
-            max-width: 430px;
-            margin: 70px auto 0 auto;
+            width: 100%;
             padding: 35px;
             border-radius: 24px;
             background: rgba(255, 255, 255, 0.96);
             box-shadow: 0 20px 60px rgba(157, 1, 57, 0.35);
             border: 1px solid rgba(255, 255, 255, 0.22);
             text-align: center;
+            margin-bottom: 0px;
         }
 
         .login-title {
@@ -58,7 +76,7 @@ def aplicar_css():
         .login-subtitle {
             color: #4B5563;
             font-size: 15px;
-            margin-bottom: 25px;
+            margin-bottom: 10px;
         }
 
         .badge {
@@ -73,7 +91,6 @@ def aplicar_css():
         }
 
         div.stButton > button {
-            width: 100%;
             height: 46px;
             border-radius: 12px;
             border: none;
@@ -169,6 +186,8 @@ def fazer_logout():
 
 
 def tela_login():
+    st.markdown('<div class="login-page"><div class="login-box">', unsafe_allow_html=True)
+
     st.markdown(
         """
         <div class="login-container">
@@ -180,14 +199,13 @@ def tela_login():
         unsafe_allow_html=True
     )
 
-    col1, col2, col3 = st.columns([1, 1.15, 1])
+    usuario = st.text_input("Usuário")
+    senha = st.text_input("Senha", type="password")
 
-    with col2:
-        usuario = st.text_input("Usuário")
-        senha = st.text_input("Senha", type="password")
+    if st.button("Entrar"):
+        fazer_login(usuario, senha)
 
-        if st.button("Entrar"):
-            fazer_login(usuario, senha)
+    st.markdown('</div></div>', unsafe_allow_html=True)
 
 
 def tela_dashboard():
