@@ -3,7 +3,7 @@ import streamlit as st
 st.set_page_config(
     page_title="SkoobPet Dashboard",
     page_icon="🐾",
-    layout="wide"
+    layout="centered"
 )
 
 USUARIOS = {
@@ -21,18 +21,16 @@ def aplicar_css():
         .stApp {
             background: linear-gradient(135deg, #1d1564 0%, #120d3f 50%, #9d0139 100%);
             color: #FFFFFF;
-            overflow: hidden;
         }
 
         [data-testid="stHeader"] {
             background: transparent;
-            height: 0px;
         }
 
         .block-container {
-            padding-top: 6vh !important;
+            max-width: 460px !important;
+            padding-top: 8vh !important;
             padding-bottom: 0rem !important;
-            max-width: 1000px !important;
         }
 
         [data-testid="stSidebar"] {
@@ -47,13 +45,13 @@ def aplicar_css():
 
         .login-container {
             width: 100%;
-            padding: 32px;
+            padding: 32px 28px;
             border-radius: 24px;
             background: rgba(255, 255, 255, 0.96);
             box-shadow: 0 20px 60px rgba(157, 1, 57, 0.35);
             border: 1px solid rgba(255, 255, 255, 0.22);
             text-align: center;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
 
         .login-title {
@@ -66,7 +64,7 @@ def aplicar_css():
         .login-subtitle {
             color: #4B5563;
             font-size: 15px;
-            margin-bottom: 4px;
+            margin-bottom: 0px;
         }
 
         .badge {
@@ -81,6 +79,7 @@ def aplicar_css():
         }
 
         div.stButton > button {
+            width: 100%;
             height: 46px;
             border-radius: 12px;
             border: none;
@@ -176,28 +175,27 @@ def fazer_logout():
 
 
 def tela_login():
-    col1, col2, col3 = st.columns([1, 1.1, 1])
+    st.markdown(
+        """
+        <div class="login-container">
+            <div class="badge">Dashboard Comercial</div>
+            <div class="login-title">🐾 SkoobPet</div>
+            <div class="login-subtitle">Acesse o painel da sua loja</div>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
 
-    with col2:
-        st.markdown(
-            """
-            <div class="login-container">
-                <div class="badge">Dashboard Comercial</div>
-                <div class="login-title">🐾 SkoobPet</div>
-                <div class="login-subtitle">Acesse o painel da sua loja</div>
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
+    usuario = st.text_input("Usuário")
+    senha = st.text_input("Senha", type="password")
 
-        usuario = st.text_input("Usuário")
-        senha = st.text_input("Senha", type="password")
-
-        if st.button("Entrar"):
-            fazer_login(usuario, senha)
+    if st.button("Entrar"):
+        fazer_login(usuario, senha)
 
 
 def tela_dashboard():
+    st.set_page_config(layout="wide")
+
     with st.sidebar:
         st.markdown("## 🐾 SkoobPet")
         st.markdown(f"**Acesso:** {st.session_state.nome_loja}")
