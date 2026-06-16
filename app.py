@@ -32,6 +32,11 @@ def aplicar_css():
             border-right: 1px solid rgba(255,255,255,0.12);
         }
 
+        label, .stTextInput label {
+            color: #FFFFFF !important;
+            font-weight: 600 !important;
+        }
+
         .login-container {
             max-width: 430px;
             margin: 70px auto 0 auto;
@@ -112,10 +117,6 @@ def aplicar_css():
             color: #9d0139;
             font-weight: 800;
             border: 1px solid #9d0139;
-        }
-
-        h1, h2, h3, h4, h5, h6, p, label, .stMarkdown {
-            color: inherit;
         }
 
         [data-testid="stMetric"] {
