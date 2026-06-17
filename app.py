@@ -163,34 +163,36 @@ def app_css():
         <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
-        :root {{
-            --navy: {NAVY};
-            --magenta: {MAGENTA};
-            --soft: {PINK_SOFT};
+        * {{
+            font-family: 'Inter', sans-serif !important;
         }}
 
-        html, body, [class*="css"] {{
-            font-family: 'Inter', sans-serif !important;
+        html, body {{
+            background: #FFF8FC;
         }}
 
         .stApp {{
             background:
-                radial-gradient(circle at top left, rgba(197,0,82,0.08), transparent 28%),
-                radial-gradient(circle at bottom right, rgba(13,20,100,0.08), transparent 30%),
-                linear-gradient(135deg, #FFFFFF 0%, #FFF7FB 45%, #F8F4FB 100%);
+                radial-gradient(circle at 5% 18%, rgba(13,20,100,0.05), transparent 16%),
+                radial-gradient(circle at 36% 70%, rgba(197,0,82,0.05), transparent 18%),
+                linear-gradient(135deg, #FFFFFF 0%, #FFF7FB 52%, #F9F4FC 100%);
             color: {TEXT};
         }}
 
         .block-container {{
-            padding-top: 2.1rem;
-            padding-left: 2.1rem;
-            padding-right: 2.1rem;
-            max-width: 1500px;
+            padding-top: 2rem;
+            padding-left: 2.3rem;
+            padding-right: 2.3rem;
+            max-width: 1540px;
+        }}
+
+        header[data-testid="stHeader"] {{
+            background: transparent;
         }}
 
         section[data-testid="stSidebar"] {{
             background: linear-gradient(180deg, {NAVY} 0%, #10156D 62%, #070B3A 100%);
-            border-right: 0px;
+            border-right: 0;
             box-shadow: 14px 0 36px rgba(13,20,100,0.16);
         }}
 
@@ -249,6 +251,239 @@ def app_css():
             color: {NAVY};
             font-weight: 900;
             letter-spacing: -0.03em;
+        }}
+
+        .login-page {{
+            min-height: calc(100vh - 80px);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 70px;
+            padding: 10px 35px 0 35px;
+        }}
+
+        .login-left-panel {{
+            min-height: 770px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+        }}
+
+        .login-paw-one {{
+            position: absolute;
+            left: 0;
+            top: 115px;
+            font-size: 150px;
+            opacity: 0.045;
+            transform: rotate(-18deg);
+        }}
+
+        .login-paw-two {{
+            position: absolute;
+            right: 70px;
+            bottom: 245px;
+            font-size: 140px;
+            opacity: 0.045;
+            transform: rotate(14deg);
+        }}
+
+        .login-logo-img {{
+            width: 280px;
+            margin-bottom: 35px;
+            filter: drop-shadow(0 8px 12px rgba(13,20,100,0.08));
+        }}
+
+        .login-brand-fallback {{
+            color: {NAVY};
+            font-size: 56px;
+            font-weight: 900;
+            margin-bottom: 28px;
+        }}
+
+        .login-welcome {{
+            color: {MAGENTA};
+            font-size: 27px;
+            font-weight: 900;
+            margin-bottom: 20px;
+        }}
+
+        .login-subtext {{
+            color: {TEXT};
+            font-size: 18px;
+            line-height: 1.65;
+            max-width: 560px;
+            margin: 0 auto;
+        }}
+
+        .login-pets {{
+            margin-top: 45px;
+            display: flex;
+            justify-content: center;
+            align-items: end;
+            gap: 28px;
+            height: 255px;
+        }}
+
+        .pet-dog, .pet-cat {{
+            filter: drop-shadow(0 22px 22px rgba(13,20,100,0.13));
+            line-height: 1;
+        }}
+
+        .pet-dog {{
+            font-size: 190px;
+        }}
+
+        .pet-cat {{
+            font-size: 155px;
+        }}
+
+        .login-bottom {{
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 118px;
+            border-radius: 26px 26px 0 0;
+            background: linear-gradient(135deg, {NAVY}, #060A39);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 72px;
+            box-shadow: 0 -18px 36px rgba(13,20,100,0.10);
+        }}
+
+        .login-bottom-item {{
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            text-align: left;
+            font-size: 15px;
+            line-height: 1.55;
+        }}
+
+        .login-bottom-icon {{
+            width: 45px;
+            height: 45px;
+            border-radius: 15px;
+            background: rgba(255,255,255,0.09);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: {MAGENTA_2};
+            font-size: 22px;
+        }}
+
+        .login-form-outer {{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }}
+
+        .login-form-card {{
+            width: 100%;
+            max-width: 720px;
+            min-height: 680px;
+            background: rgba(255,255,255,0.96);
+            border: 1px solid rgba(13,20,100,0.08);
+            border-radius: 30px;
+            padding: 60px 72px 50px 72px;
+            box-shadow: 0 28px 70px rgba(13,20,100,0.12);
+        }}
+
+        .login-form-card h1 {{
+            font-size: 42px;
+            color: {NAVY};
+            margin: 0 0 10px 0;
+            letter-spacing: -0.04em;
+            font-weight: 900;
+        }}
+
+        .login-form-card .login-help {{
+            color: #36405A;
+            font-size: 19px;
+            margin-bottom: 34px;
+        }}
+
+        .login-form-card label {{
+            color: {TEXT} !important;
+            font-size: 16px !important;
+            font-weight: 800 !important;
+        }}
+
+        .login-form-card div[data-testid="stTextInput"] {{
+            margin-bottom: 20px;
+        }}
+
+        .login-form-card div[data-testid="stTextInput"] input {{
+            min-height: 58px;
+            border-radius: 14px !important;
+            border: 1px solid rgba(13,20,100,0.16) !important;
+            background: #FFFFFF !important;
+            font-size: 17px;
+            padding-left: 18px;
+        }}
+
+        .login-form-card div[data-testid="stTextInput"] input:focus {{
+            border-color: {MAGENTA} !important;
+            box-shadow: 0 0 0 3px rgba(197,0,82,0.10) !important;
+        }}
+
+        .login-form-card div[data-testid="stCheckbox"] label span {{
+            color: {TEXT} !important;
+            font-weight: 700 !important;
+            font-size: 16px !important;
+        }}
+
+        .forgot-password {{
+            text-align: right;
+            color: {MAGENTA};
+            font-weight: 800;
+            font-size: 16px;
+            padding-top: 8px;
+        }}
+
+        .login-separator {{
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            color: {MUTED};
+            font-weight: 700;
+            margin: 34px 0 30px 0;
+        }}
+
+        .login-separator:before,
+        .login-separator:after {{
+            content: "";
+            height: 1px;
+            background: rgba(13,20,100,0.12);
+            flex: 1;
+        }}
+
+        .google-button {{
+            min-height: 58px;
+            border: 1px solid rgba(13,20,100,0.16);
+            border-radius: 14px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            color: {TEXT};
+            font-size: 17px;
+            font-weight: 800;
+            background: #FFFFFF;
+        }}
+
+        .login-copy {{
+            text-align: center;
+            margin-top: 42px;
+            color: {MUTED};
+            font-size: 15px;
+            font-weight: 500;
         }}
 
         .page-header {{
@@ -418,18 +653,20 @@ def app_css():
 
         div.stButton > button,
         div.stDownloadButton > button,
-        button[kind="primary"] {{
+        button[kind="primary"],
+        div[data-testid="stFormSubmitButton"] button {{
             background: linear-gradient(135deg, {NAVY}, {MAGENTA}) !important;
             color: white !important;
             border: none !important;
             border-radius: 13px !important;
             font-weight: 800 !important;
-            min-height: 42px;
+            min-height: 48px;
             box-shadow: 0 12px 24px rgba(197,0,82,0.20);
         }}
 
         div.stButton > button:hover,
-        div.stDownloadButton > button:hover {{
+        div.stDownloadButton > button:hover,
+        div[data-testid="stFormSubmitButton"] button:hover {{
             filter: brightness(1.04);
             color: white !important;
         }}
@@ -518,105 +755,6 @@ def app_css():
             margin-right: 8px;
         }}
 
-        .login-container {{
-            min-height: 90vh;
-            display: grid;
-            grid-template-columns: 1fr 1.05fr;
-            gap: 60px;
-            align-items: center;
-            padding: 30px 24px;
-        }}
-
-        .login-left {{
-            text-align: center;
-            position: relative;
-            min-height: 690px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }}
-
-        .paw-bg {{
-            position: absolute;
-            font-size: 180px;
-            color: rgba(197,0,82,0.05);
-            left: 10px;
-            top: 130px;
-            transform: rotate(-20deg);
-        }}
-
-        .pet-illustration {{
-            font-size: 150px;
-            margin-top: 45px;
-            filter: drop-shadow(0 18px 22px rgba(13,20,100,0.12));
-        }}
-
-        .login-logo {{
-            width: 230px;
-            margin-bottom: 28px;
-        }}
-
-        .login-title {{
-            color: {MAGENTA};
-            font-size: 25px;
-            font-weight: 900;
-            margin-bottom: 18px;
-        }}
-
-        .login-text {{
-            max-width: 420px;
-            margin: 0 auto;
-            color: {TEXT};
-            line-height: 1.7;
-            font-weight: 500;
-        }}
-
-        .login-bottom-bar {{
-            position: absolute;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, {NAVY}, #070B3A);
-            color: white;
-            border-radius: 24px 24px 0 0;
-            padding: 24px 30px;
-            display: flex;
-            justify-content: center;
-            gap: 48px;
-            text-align: left;
-        }}
-
-        .login-form-card {{
-            background: white;
-            border: 1px solid {BORDER};
-            border-radius: 26px;
-            padding: 56px 64px;
-            box-shadow: 0 24px 60px rgba(13,20,100,0.13);
-            max-width: 650px;
-            width: 100%;
-        }}
-
-        .login-form-card h1 {{
-            font-size: 38px;
-            margin-bottom: 8px;
-            color: {NAVY};
-        }}
-
-        .login-form-card p {{
-            color: {MUTED};
-            margin-bottom: 30px;
-            font-size: 16px;
-        }}
-
-        .login-footer {{
-            text-align: center;
-            margin-top: 32px;
-            color: {MUTED};
-            font-size: 13px;
-        }}
-
         .table-card {{
             background: {WHITE};
             border: 1px solid {BORDER};
@@ -631,17 +769,23 @@ def app_css():
             overflow: hidden;
         }}
 
-        @media (max-width: 1000px) {{
-            .login-container {{
+        @media (max-width: 1050px) {{
+            .login-page {{
                 grid-template-columns: 1fr;
-                gap: 20px;
+                gap: 24px;
+                padding: 0;
             }}
-            .login-left {{
-                min-height: 430px;
+            .login-left-panel {{
+                min-height: 600px;
             }}
-            .login-bottom-bar {{
+            .login-bottom {{
                 position: relative;
                 margin-top: 24px;
+                width: 100%;
+            }}
+            .login-form-card {{
+                padding: 38px 28px;
+                min-height: auto;
             }}
         }}
         </style>
@@ -746,64 +890,105 @@ def check_login(username, password):
 
 def login_page():
     logo = img_base64(LOGO_PATH)
+    logo_html = (
+        f'<img class="login-logo-img" src="data:image/png;base64,{logo}">'
+        if logo
+        else '<div class="login-brand-fallback">SkoobPet</div>'
+    )
 
-    st.markdown(
-        f"""
-        <div class="login-container">
-            <div class="login-left">
-                <div class="paw-bg">🐾</div>
-                {f'<img class="login-logo" src="data:image/png;base64,{logo}">' if logo else '<h1>SkoobPet</h1>'}
-                <div class="login-title">Bem-vindo(a) de volta!</div>
-                <div class="login-text">
+    st.markdown('<div class="login-page">', unsafe_allow_html=True)
+
+    left, right = st.columns([1, 1], gap="large")
+
+    with left:
+        st.markdown(
+            f"""
+            <div class="login-left-panel">
+                <div class="login-paw-one">🐾</div>
+                <div class="login-paw-two">🐾</div>
+
+                {logo_html}
+
+                <div class="login-welcome">Bem-vindo(a) de volta!</div>
+
+                <div class="login-subtext">
                     Faça login para acessar o painel da SkoobPet<br>
                     e acompanhar os resultados da unidade<br>
                     <b>Campinas.</b>
                 </div>
-                <div class="pet-illustration">🐶🐱</div>
 
-                <div class="login-bottom-bar">
-                    <div>📍<br><b>Unidade selecionada</b><br>Campinas</div>
-                    <div>🛡️<br><b>Seus dados protegidos</b><br>com segurança</div>
+                <div class="login-pets">
+                    <div class="pet-dog">🐶</div>
+                    <div class="pet-cat">🐱</div>
+                </div>
+
+                <div class="login-bottom">
+                    <div class="login-bottom-item">
+                        <div class="login-bottom-icon">📍</div>
+                        <div>
+                            <div style="opacity:.72;">Unidade selecionada</div>
+                            <b>Campinas</b>
+                        </div>
+                    </div>
+
+                    <div style="height:46px; width:1px; background:rgba(255,255,255,0.24);"></div>
+
+                    <div class="login-bottom-item">
+                        <div class="login-bottom-icon">🛡️</div>
+                        <div>
+                            <div style="opacity:.72;">Seus dados protegidos</div>
+                            <b>com segurança</b>
+                        </div>
+                    </div>
                 </div>
             </div>
+            """,
+            unsafe_allow_html=True,
+        )
 
-            <div class="login-form-card">
-                <h1>Acessar conta</h1>
-                <p>Informe suas credenciais para continuar</p>
-        """,
-        unsafe_allow_html=True,
-    )
+    with right:
+        st.markdown('<div class="login-form-outer"><div class="login-form-card">', unsafe_allow_html=True)
+        st.markdown(
+            """
+            <h1>Acessar conta</h1>
+            <div class="login-help">Informe suas credenciais para continuar</div>
+            """,
+            unsafe_allow_html=True,
+        )
 
-    with st.form("login_form"):
-        username = st.text_input("Usuário", placeholder="Digite seu usuário")
-        password = st.text_input("Senha", placeholder="Digite sua senha", type="password")
+        with st.form("login_form"):
+            username = st.text_input("Usuário", placeholder="Digite seu usuário")
+            password = st.text_input("Senha", placeholder="Digite sua senha", type="password")
 
-        c1, c2 = st.columns([1, 1])
-        with c1:
-            lembrar = st.checkbox("Lembrar de mim")
-        with c2:
-            st.markdown(
-                f"<div style='text-align:right; color:{MAGENTA}; font-weight:800; margin-top:8px;'>Esqueci minha senha</div>",
-                unsafe_allow_html=True,
-            )
+            c1, c2 = st.columns([1, 1])
+            with c1:
+                st.checkbox("Lembrar de mim")
+            with c2:
+                st.markdown('<div class="forgot-password">Esqueci minha senha</div>', unsafe_allow_html=True)
 
-        entrar = st.form_submit_button("Entrar", use_container_width=True)
+            entrar = st.form_submit_button("Entrar", use_container_width=True)
 
-    st.markdown(
-        """
-                <div class="login-footer">© 2026 SkoobPet. Todos os direitos reservados.</div>
+        st.markdown(
+            """
+            <div class="login-separator">ou</div>
+            <div class="google-button">
+                <span style="font-size:22px;">G</span>
+                Entrar com Google
             </div>
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
+            <div class="login-copy">© 2026 SkoobPet. Todos os direitos reservados.</div>
+            """,
+            unsafe_allow_html=True,
+        )
+        st.markdown("</div></div>", unsafe_allow_html=True)
 
-    if entrar:
-        if check_login(username, password):
-            st.session_state["logged_in"] = True
-            st.rerun()
-        else:
-            st.error("Usuário ou senha incorretos.")
+        if entrar:
+            if check_login(username, password):
+                st.session_state["logged_in"] = True
+                st.rerun()
+            else:
+                st.error("Usuário ou senha incorretos.")
+
+    st.markdown("</div>", unsafe_allow_html=True)
 
 
 # ==========================================================
