@@ -34,8 +34,8 @@ UNIDADE_DASHBOARD = "Campinas"
 LOGO_PATH = Path("skoobpet.png")
 
 # Usuário/senha padrão. No Streamlit Cloud, você pode trocar em Secrets.
-DEFAULT_USER = "administrador"
-DEFAULT_PASSWORD = "skoobpet123"
+DEFAULT_USER = "skoob"
+DEFAULT_PASSWORD = "skoob123"
 
 # Nome/URL da planilha. No Streamlit Cloud, configure SHEET_URL ou SHEET_ID em Secrets.
 DEFAULT_SHEET_NAME = "Controle Pos e Pedigree 2026"
@@ -467,10 +467,19 @@ def render_login():
         submitted = st.form_submit_button("Entrar", use_container_width=True)
     st.markdown("</div></div>", unsafe_allow_html=True)
 
+    # Login fixo solicitado:
+    # usuário: skoob
+    # senha: skoob123
+    #
+    # Também mantém compatibilidade com Secrets, caso você configure LOGIN_USER/LOGIN_PASSWORD no Streamlit.
     valid_user = get_secret("LOGIN_USER", DEFAULT_USER)
     valid_pass = get_secret("LOGIN_PASSWORD", DEFAULT_PASSWORD)
+
+    login_fixo_ok = username == DEFAULT_USER and password == DEFAULT_PASSWORD
+    login_secret_ok = username == valid_user and password == valid_pass
+
     if submitted:
-        if username == valid_user and password == valid_pass:
+        if login_fixo_ok or login_secret_ok:
             st.session_state["logged"] = True
             st.session_state["user"] = username
             st.rerun()
